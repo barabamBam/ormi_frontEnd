@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HODU</title>
+    <link rel="stylesheet" href="../style/frontEnd_css.css">
+
+    <!--    <script type="text/javascript">-->
+    <!--        import config from './config.js'-->
+
+    <!--        const {API_KEY} = config;-->
+    <!--    </script>-->
+
+</head>
+<body>
+<header>
+    <img src="../img/logo_img.png" alt="고양이가 귀여운 홈페이지 로고 이미지" class="logo_img" id="logo_top">
+    <nav>
+        <ul>
+            <li>
+                <a href="">Home</a>
+            </li>
+            <li>
+                <a href="">About</a>
+            </li>
+            <li>
+                <a href="">Support</a>
+            </li>
+            <li>
+                <button class="download_button">Download</button>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <div class="top">
+        <div>
+            <h2>Lorem Ipsum is simply </h2>
+            <h2>dummy text of the printing and</h2>
+            <p class="normal_text first_child">Lorem Ipsum is simply dummy text of the printing and </p>
+            <p class="normal_text">typesetting industry. </p>
+            <p class="normal_text">Lorem Ipsum has been the industry's standard dummy text </p>
+            <p class="normal_text">ever since the 1500s, when an unknown</p>
+            <button class="download_button">Download</button>
+        </div>
+        <img src="../img/body1_img.png" alt="박스를 뒤집어 쓴 고양이 이미지" class="box_cat">
+    </div>
+    <div class="mid">
+        <article id="desc_article">
+            <img src="../img/body2_img.jpeg" alt="침대에 누워있는 고양이 이미지" class="bed_cat">
+            <div>
+                <h3>Lorem Ipsum is simply dummy text of the printing and dummy text</h3>
+                <p class="normal_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            </div>
+        </article>
+        <article id="image_article">
+            <h2>dummy text of the printing and dummy</h2>
+            <p class="normal_text">Lorem Ipsum is simply <span>dummy text</span> of the printing and typesetting
+                industry.</p>
+            <p class="normal_text">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                unknown</p>
+            <ul class="show_img">
+                <li>
+                    <a href="../img/cat1.jpeg" download><img src="../img/cat1.jpeg" alt="귀여운 고양이 사진"></a>
+                </li>
+                <li>
+                    <a href="../img/cat1.jpeg" download><img src="../img/cat2.jpeg" alt="귀여운 고양이 사진"></a>
+                </li>
+                <li>
+                    <a href="../img/cat1.jpeg" download><img src="../img/cat3.jpeg" alt="귀여운 고양이 사진"></a>
+                </li>
+            </ul>
+            <ul class="show_img">
+                <li>
+                    <a href="../img/cat1.jpeg" download><img src="../img/cat4.jpeg" alt="귀여운 고양이 사진"></a>
+                </li>
+                <li>
+                    <a href="../img/cat1.jpeg" download><img src="../img/cat5.jpeg" alt="귀여운 고양이 사진"></a>
+                </li>
+                <li>
+                    <a href="../img/cat1.jpeg" download><img src="../img/cat6.jpeg" alt="귀여운 고양이 사진"></a>
+                </li>
+            </ul>
+            <p class="bold_text">Continue exploring HODU</p>
+            <button id="show_more">Show more</button>
+        </article>
+        <article id="map_article">
+            <h3>Where you’ll be</h3>
+            <p class="normal_text map_addr"></p>
+            <div class="map_wrap">
+                <div id="map"></div>
+                <!-- 지도타입 컨트롤 div 입니다 -->
+                <div class="custom_typecontrol radius_border">
+                    <span id="btnRoadmap" class="selected_btn" onclick="setMapType('roadmap')">지도</span>
+                    <span id="btnSkyview" class="btn" onclick="setMapType('skyview')">스카이뷰</span>
+                </div>
+                <!-- 지도 확대, 축소 컨트롤 div 입니다 -->
+                <div class="custom_zoomcontrol radius_border">
+                    <span onclick="zoomIn()"><img
+                            src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png" alt="확대"></span>
+                    <span onclick="zoomOut()"><img
+                            src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png"
+                            alt="축소"></span>
+                </div>
+            </div>
+        </article>
+    </div>
+    <div id="subscribe_div">
+        <div>
+            <p>Subscribe to our Blog post</p>
+            <p class="normal_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                Ipsum
+                has been the
+                industry's
+                standard dummy text</p>
+        </div>
+        <form>
+            <input type="email" name="email" id="input_email" placeholder="Enter your e-mail address">
+            <input type="submit" id="input_submit" value="Subscribe">
+        </form>
+    </div>
+    <div id="modal">
+        <img src="../img/modal_cat_Img.png" alt="발그레한 고양이">
+        <p>Thank you!</p>
+        <p>Lorem Ipsum is simply dummy text of the printing industry.</p>
+        <button class="ok_btn">OK! I Love HODU</button>
+    </div>
+    <button id="scroll_Top">
+        <a href="#">
+            <span id="arrow"></span>
+        </a>
+    </button>
+</main>
+<footer>
+    <img src="../img/logo_img.png" alt="고양이가 귀여운 홈페이지 로고 이미지" class="logo_img" id="logo_bottom">
+    <nav>
+        <ul>
+            <li>
+                <a href="">
+                    <img src="../img/blog_img.jpg" alt="blog 아이콘" class="icon_img">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="../img/insta_img.jpg" alt="인스타 아이콘" class="icon_img">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="../img/facebook_img.jpg" alt="facebook 아이콘" class="icon_img">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="../img/youtube_img.jpg" alt="youtube 아이콘" class="icon_img">
+                </a>
+            </li>
+        </ul>
+    </nav>
+</footer>
+
+<!-- services 라이브러리 불러오기 -->
+<script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=25bf9d8ca07f2fedc64e518d59c7442d&libraries=services"></script>
+<script src="../javascript/frontEnd_map.js"></script>
+<script src="../javascript/frontEnd_func.js"></script>
+</body>
+</html>

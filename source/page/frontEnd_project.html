@@ -16,8 +16,19 @@
 
 </head>
 <body>
+<div id="overlay"></div>
 <header>
     <img src="../img/logo_img.png" alt="고양이가 귀여운 홈페이지 로고 이미지" class="logo_img" id="logo_top">
+    <svg class="menu_open" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 16H28" stroke="#263140" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/>
+        <path d="M4 8H28" stroke="#263140" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/>
+        <path d="M4 24H28" stroke="#263140" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/>
+    </svg>
+    <svg class="menu_close" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6.66675 16L22.6667 16" stroke="white" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/>
+        <path d="M15.9999 25.3333L25.3333 16L15.9999 6.66667" stroke="white" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/>
+    </svg>
+
     <nav>
         <ul>
             <li>
@@ -67,21 +78,19 @@
                     <a href="../img/cat1.jpeg" download><img src="../img/cat1.jpeg" alt="귀여운 고양이 사진"></a>
                 </li>
                 <li>
-                    <a href="../img/cat1.jpeg" download><img src="../img/cat2.jpeg" alt="귀여운 고양이 사진"></a>
+                    <a href="../img/cat2.jpeg" download><img src="../img/cat2.jpeg" alt="귀여운 고양이 사진"></a>
                 </li>
                 <li>
-                    <a href="../img/cat1.jpeg" download><img src="../img/cat3.jpeg" alt="귀여운 고양이 사진"></a>
-                </li>
-            </ul>
-            <ul class="show_img">
-                <li>
-                    <a href="../img/cat1.jpeg" download><img src="../img/cat4.jpeg" alt="귀여운 고양이 사진"></a>
+                    <a href="../img/cat3.jpeg" download><img src="../img/cat3.jpeg" alt="귀여운 고양이 사진"></a>
                 </li>
                 <li>
-                    <a href="../img/cat1.jpeg" download><img src="../img/cat5.jpeg" alt="귀여운 고양이 사진"></a>
+                    <a href="../img/cat4.jpeg" download><img src="../img/cat4.jpeg" alt="귀여운 고양이 사진"></a>
                 </li>
                 <li>
-                    <a href="../img/cat1.jpeg" download><img src="../img/cat6.jpeg" alt="귀여운 고양이 사진"></a>
+                    <a href="../img/cat5.jpeg" download><img src="../img/cat5.jpeg" alt="귀여운 고양이 사진"></a>
+                </li>
+                <li>
+                    <a href="../img/cat6.jpeg" download><img src="../img/cat6.jpeg" alt="귀여운 고양이 사진"></a>
                 </li>
             </ul>
             <p class="bold_text">Continue exploring HODU</p>
@@ -118,7 +127,7 @@
                 standard dummy text</p>
         </div>
         <form>
-            <input type="email" name="email" id="input_email" placeholder="Enter your e-mail address">
+            <input type="email" name="email" id="input_email" placeholder="Enter your e-mail address" required>
             <input type="submit" id="input_submit" value="Subscribe">
         </form>
     </div>

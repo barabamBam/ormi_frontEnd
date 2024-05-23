@@ -17,6 +17,7 @@ ul {
 header, footer {
     display: flex;
     align-items: center;
+    justify-content: space-around;
 }
 
 header, .top {
@@ -34,11 +35,12 @@ header {
 
 #logo_top {
     height: 40px;
-    padding-left: 17%;
 }
-
+.menu_open
+, .menu_close {
+    display: none;
+}
 header nav {
-    padding-left: 40%;
 }
 
 header nav ul li a {
@@ -102,9 +104,11 @@ main > div {
 }
 
 .top {
-    height: 798px;
+    width: 100%;
+    min-height: 798px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .top h2 {
@@ -128,16 +132,19 @@ main > div {
 }
 
 .top div {
-    padding: 200px 20% 0 320px;
+    padding: 200px 20% 0 15%;
     width: 695px;
     height: 336px;
 }
 
 .box_cat {
-    width: 415px;
-    height: 766px;
+    max-width: 415px;
+    max-height: 766px;
+    width: 20vw;
+    height:70vh;
     position: relative;
     top: 100px;
+    padding-right: 5%;
 }
 
 .mid {
@@ -164,27 +171,31 @@ h3 {
 
 #desc_article {
     display: flex;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
 }
 
 #desc_article div {
-    padding-top: 172px;
 }
 
 #desc_article div h3 {
-    width: 430px;
+    max-width: 430px;
     height: fit-content;
     padding-bottom: 30px;
 }
 
 #desc_article div p {
-    width: 510px;
-    height: 40px;
+    max-width: 510px;
+    min-height: 40px;
 }
 
 .bed_cat {
-    width: 660px;
-    height: 390px;
-    margin: 80px 110px 120px 0px;
+    max-width: 660px;
+    max-height: 390px;
+    width: 40%;
+    height: 50%;
+    margin: 80px 10% 120px 5%;
 
     filter: drop-shadow(10px 10px 30px rgba(0, 0, 0, 0.25));
     border-radius: 30px;
@@ -194,11 +205,12 @@ h3 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 90%;
 }
 
 #image_article h2 {
     padding-bottom: 40px;
-    height: 60px;
+    min-height: 60px;
 
     font-style: normal;
     font-weight: 700;
@@ -218,7 +230,7 @@ h3 {
 #image_article p span {
     color: #D97652;
 }
-
+#image_article
 #image_article .bold_text {
     font-size: 24px;
     font-weight: 700;
@@ -229,18 +241,19 @@ h3 {
 #image_article > p:nth-child(3) {
     padding-bottom: 88px;
 }
-
+.show_img {
+    max-width: 1350px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 .show_img li {
-    padding: 0 72px 72px 0;
+    padding: 0 36px 72px 36px;
 }
 
 .show_img li img:hover {
     transform: scale(1.1);
 }
 
-.show_img li:last-child {
-    padding-right: 0;
-}
 
 .show_img img {
     width: 378px;
@@ -268,15 +281,24 @@ h3 {
 
 #map_article::before {
     display: block;
-    width: 1278px;
+    width: 100%;
     height: 1px;
     content: "";
     background-color: rgba(196, 196, 196, 0.5);
     margin: 80px 0 68px 0;
 }
-
+#map_article {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#map_article h3
+, #map_article > p {
+    width: 100%;
+}
 .map_wrap {
-    width: 1278px;
+    width: 100%;
     height: 520px;
     margin-bottom: 181px;
     overflow: hidden;
@@ -383,24 +405,25 @@ h3 {
 }
 
 #subscribe_div {
+    max-width: 1280px;
     position: absolute;
     /*top: 50px;*/
-    width: 1280px;
-    height: 200px;
-
+    width: 70%;
+    min-height: 200px;
+    padding: 0 3%;
     background: #263140;
     border-radius: 30px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: space-between;
     z-index: 5;
 }
 
 #subscribe_div div {
-    width: 471px;
-    height: 99px;
+    max-width: 471px;
+    min-height: 99px;
 
-    padding-left: 58px;
-    padding-right: 163px;
 }
 
 #subscribe_div div p:first-child {
@@ -431,7 +454,7 @@ h3 {
 }
 
 #subscribe_div form {
-    width: 530px;
+    max-width: 530px;
     height: 60px;
 
     background: #FFFFFF;
@@ -441,7 +464,8 @@ h3 {
 }
 
 #input_email {
-    width: 315px;
+    max-width: 315px;
+    min-width: 100px;
     height: 40px;
 
     border: none;
@@ -453,8 +477,7 @@ h3 {
 }
 
 #input_email:focus {
-    border: none;
-
+    outline: none;
 }
 
 #input_submit {
@@ -517,7 +540,7 @@ h3 {
     background-size: 600px 400px;
     background-repeat: no-repeat;
 
-    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 1px 30px rgba(0, 0, 0, 0.2);
     border-radius: 30px;
 
     display: flex;
@@ -550,7 +573,15 @@ h3 {
     text-align: center;
     padding-bottom: 38px;
 }
-
+#overlay {
+    display: none;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+    position: fixed;
+    z-index: 8;
+    width: 100vw;
+    height: 100vh;
+}
 footer {
     width: 100%;
     height: 160px;
@@ -559,11 +590,9 @@ footer {
 #logo_bottom {
     width: 226px;
     height: 70px;
-    padding-left: 17%;
 }
 
 footer nav {
-    padding-left: 43%;
 }
 
 .icon_img {
@@ -572,6 +601,69 @@ footer nav {
     padding: 0 10px;
 }
 
+@media screen and (max-width: 1240px) {
+    .menu_open {display: unset; }
+    header nav { display: none; }
+    footer {
+        align-items: flex-start;
+        justify-content: space-around;
+        flex-direction: column;
+        padding: 30px;
+    }
+    }
+    .top div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .box_cat {
+        width: 197px;
+        height: 422px;
+    }
+    #desc_article {
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 80px;
+    }
+    #desc_article div h3 { width: fit-content; }
+    #desc_article div p { width: fit-content; }
+    .bed_cat {
+        width: 100%;
+        margin: 40px 0;
+    }
+    h2, h3 {
+        font-size: 24px;
+        line-height: 30px;
+        text-align: center;
+    }
+    button {
+        width: 114px;
+        height:40px;
+        font-size: 14px;
+        line-height: 18px;
+    }
+    .bold_text {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .show_img img {
+        width: 326px;
+        height: 326px;
+    }
+    .map_wrap {
+        height:132px;
+    }
+    #subscribe_div {
+        padding: 30px;
+        width: 35%;
+    }
+    #subscribe_div form { margin-bottom: 70px; }
+    #subscribe_div div p:not(:first-child) { padding-bottom: 30px; }
+    #input_submit {
+        position: relative;
+        top: 80px;
+    }
+}
 @font-face {
     font-family: 'Pretendard';
     src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');

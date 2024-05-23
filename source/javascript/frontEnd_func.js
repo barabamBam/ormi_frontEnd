@@ -2,20 +2,31 @@
 const subs_div = document.querySelector('#subscribe_div');
 let mainHeight = document.querySelector('main').offsetHeight;
 subs_div.style.top = mainHeight - 320 + 'px';
+window.addEventListener('resize', (event) => {
+    mainHeight = document.querySelector('main').offsetHeight;
+    subs_div.style.top = mainHeight - 320 + 'px';
+});
 
 // subscribe 버튼 클릭 시 modal 창 띄우기 & ok 버튼 클릭 시 다시 hidden
 const form = document.querySelector('form');
 const mail = document.querySelector('#input_email');
 const modal = document.querySelector('#modal');
+const overlay = document.querySelector('#overlay');
 const ok_btn = document.querySelector('.ok_btn');
+overlay.style.width = document.body.offsetWidth + 'px';
+overlay.style.height = document.body.offsetHeight + 'px';
 let inputValue = "";
 form.addEventListener('submit', function (event) {
     event.preventDefault();
     modal.style.visibility = "unset";
+    overlay.style.display = "unset";
     inputValue = mail.value;
     mail.value = "";
 });
-ok_btn.addEventListener('click', (event) => modal.style.visibility = "hidden");
+ok_btn.addEventListener('click', (event) => {
+    modal.style.visibility = "hidden";
+    overlay.style.display = "none";
+});
 
 
 // show_more 버튼 클릭 시 action
@@ -62,7 +73,7 @@ show_more.addEventListener('click', function (event) {
             }
             let newElement = document.createElement('ul');
             newElement.setAttribute("class", "show_img");
-            for (let j = 0; j < 3; j++) {
+            for (let j = 0; j < 6; j++) {
                 // 파일이 없으면
                 if (fileFind() === false) {
                     // show_more.style.visibility = "hidden";
@@ -71,7 +82,7 @@ show_more.addEventListener('click', function (event) {
                     newElement.style.width = obj.children[childNum].offsetWidth + 'px';
                     console.log(obj.children[childNum].offsetWidth);
                 } else {
-                    // 사진을 3개씩 묶어서 리스트로 만듧
+                    // 사진을 6개씩 묶어서 리스트로 만듧
                     let newChild = document.createElement('li');
                     let aChild = document.createElement('a');
                     let imgChild = document.createElement('img');
@@ -94,6 +105,14 @@ show_more.addEventListener('click', function (event) {
     subs_div.style.top = mainHeight - 320 + 'px';
 
     window.scrollTo({top: obj.children[childNum].offsetTop, behavior: "smooth"});
+});
+
+// img 다운로드 전에 물어보기
+let downImgs = document.querySelectorAll('.show_img li a');
+downImgs.forEach((item) => {
+    item.addEventListener('click', (event) => {
+        if(!confirm('사진을 다운로드 하시겠습니까?')) event.preventDefault();
+    });
 });
 
 // 파일 존재 여부 확인

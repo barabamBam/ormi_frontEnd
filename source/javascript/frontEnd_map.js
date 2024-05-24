@@ -52,13 +52,13 @@ getLocation();
 function write_location(pos) {
     searchDetailAddrFromCoords(pos, function (result, status) {
         if (status === kakao.maps.services.Status.OK) {
-            var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
-            detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
-
-            var content = '<div class="bAddr">' +
-                '<span class="title">법정동 주소정보</span>' +
-                detailAddr +
-                '</div>';
+            // var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
+            // detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
+            //
+            // var content = '<div class="bAddr">' +
+            //     '<span class="title">법정동 주소정보</span>' +
+            //     detailAddr +
+            //     '</div>';
 
             // 주소 영문 변환
             let addr;
@@ -87,11 +87,13 @@ async function convertEnglish(addr) {
         if(!response.ok) throw new Error('영문 주소를 받아올 수 없습니다.');
         // 제이슨 데이터를 자바스크립트 객체로 파싱
         const data = await response.json();
+        console.log(data);
         let res = data.results.juso[0].roadAddr;
         //console.log(res);
         addr_tag.innerText = res;
     }catch(error){
         console.error(error);
+        addr_tag.innerText = addr;
     }
 
         // fetch(`https://www.juso.go.kr/addrlink/addrEngApi.do?keyword=${addr}&confmKey=devU01TX0FVVEgyMDI0MDUyMTE2MzcwMDExNDc4MjU=&resultType=json`)

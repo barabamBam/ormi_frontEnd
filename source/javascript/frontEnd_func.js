@@ -31,27 +31,25 @@ ok_btn.addEventListener('click', (event) => {
 
 // show_more 버튼 클릭 시 action
 const show_more = document.querySelector('#show_more');
+const continueTxt = document.querySelector('#continue_txt');
 let catNum = 7;
-let childNum = 0;
-let cnt = 0;
+let cnt = 1;
 
 show_more.addEventListener('click', function (event) {
     let obj = document.getElementById('image_article');
+    // 이미지를 삽입할 위치 지정
+    let previous = obj.lastElementChild.previousElementSibling;
+    let pre_prev = previous.previousElementSibling;
 
     if (show_more.getAttribute("class") === "close") {
         catNum = 7;
         // 이미지 지우기
-        for (let i = 0; i < obj.children.length; i++) {
-            if (obj.children[i].getAttribute("class") === "show_img") {
-                console.log("1");
-                for (cnt; cnt >= 2; cnt--) {
-                    console.log("cnt: " + cnt);
-                    obj.children[childNum + 1].remove();
-                    childNum--;
-                }
-                break;
-            }
+        for (cnt; cnt > 1; cnt--) {
+            pre_prev = previous.previousElementSibling;
+            //console.log("cnt: " + cnt);
+            pre_prev.remove();
         }
+
         show_more.classList.remove("close");
         show_more.innerText = 'Show more';
 
@@ -62,15 +60,8 @@ show_more.addEventListener('click', function (event) {
             show_more.setAttribute("class", "close");
             show_more.innerText = "CLOSE";
         } else {
-            // 이미지 삽입할 위치 탐색
-            cnt = 0;
-            for (let i = 0; i < obj.children.length; i++) {
-                if (obj.children[i].getAttribute("class") === "show_img") {
-                    childNum = i;
-                    cnt++;
-
-                }
-            }
+            cnt++;
+            // 이미지 삽입
             let newElement = document.createElement('ul');
             newElement.setAttribute("class", "show_img");
             for (let j = 0; j < 6; j++) {
@@ -79,32 +70,23 @@ show_more.addEventListener('click', function (event) {
                     // show_more.style.visibility = "hidden";
                     show_more.setAttribute("class", "close");
                     show_more.innerText = "CLOSE";
-                    newElement.style.width = obj.children[childNum].offsetWidth + 'px';
-                    console.log(obj.children[childNum].offsetWidth);
+                    newElement.style.width = pre_prev.offsetWidth + 'px';
+                    break;
                 } else {
                     // 사진을 6개씩 묶어서 리스트로 만듧
-                    let newChild = document.createElement('li');
-                    let aChild = document.createElement('a');
-                    let imgChild = document.createElement('img');
-                    imgChild.src = `../img/cat${catNum}.jpg`;
-                    imgChild.alt = "귀여운 고양이 사진";
-                    aChild.href = `../img/cat${catNum}.jpg`;
-                    aChild.setAttribute("download", "");
+                    newElement.insertAdjacentHTML('beforeend', `<li><a href="../img/cat${catNum}.jpg" download><img src="../img/cat${catNum}.jpg" alt="귀여운 고양이 사진"></a></li>`);
                     catNum += 1;
-                    aChild.appendChild(imgChild);
-                    newChild.appendChild(aChild);
-                    newElement.appendChild(newChild);
                 }
             }
             // 리스트 등록 및 sub 창 위치 변경
-            obj.insertBefore(newElement, obj.children[childNum + 1]);
+            obj.insertBefore(newElement, previous);
 
         }
     }
     mainHeight = document.querySelector('main').offsetHeight;
     subs_div.style.top = mainHeight - 320 + 'px';
-
-    window.scrollTo({top: obj.children[childNum].offsetTop, behavior: "smooth"});
+    pre_prev = previous.previousElementSibling;
+    window.scrollTo({top: pre_prev.offsetTop, behavior: "smooth"});
 });
 
 // img 다운로드 전에 물어보기

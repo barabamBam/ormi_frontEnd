@@ -71,14 +71,8 @@ function write_location(pos) {
             if (!checkSearchedWord(addr)) {
                 return;
             }
+            convertEnglish(addr);
 
-            fetch(`https://www.juso.go.kr/addrlink/addrEngApi.do?keyword=${addr}&confmKey=devU01TX0FVVEgyMDI0MDUyMTE2MzcwMDExNDc4MjU=&resultType=json`)
-                .then((response) => response.json())
-                .then((data) => {
-                    let res = data.results.juso[0].roadAddr;
-                    //console.log(res);
-                    addr_tag.innerText = res;
-                });
             // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
             // infowindow.setContent(content);
             // infowindow.open(map, marker);
@@ -86,6 +80,31 @@ function write_location(pos) {
     })
 }
 
+// 좌표에 해당하는 위치의 주소를 영문 변환
+async function convertEnglish(addr) {
+    try {
+        const response = await fetch(`https://www.juso.go.kr/addrlink/addrEngApi.do?keyword=${addr}&confmKey=devU01TX0FVVEgyMDI0MDUyMTE2MzcwMDExNDc4MjU=&resultType=json`);
+        if(!response.ok) throw new Error('영문 주소를 받아올 수 없습니다.');
+        // 제이슨 데이터를 자바스크립트 객체로 파싱
+        const data = await response.json();
+        let res = data.results.juso[0].roadAddr;
+        //console.log(res);
+        addr_tag.innerText = res;
+    }catch(error){
+        console.error(error);
+    }
+
+        // fetch(`https://www.juso.go.kr/addrlink/addrEngApi.do?keyword=${addr}&confmKey=devU01TX0FVVEgyMDI0MDUyMTE2MzcwMDExNDc4MjU=&resultType=json`)
+        //     .then((response) => response.json())
+        //     .then((data) => {
+        //         let res = data.results.juso[0].roadAddr;
+        //         //console.log(res);
+        //         addr_tag.innerText = res;
+        //     });
+
+};
+
+// 현재 위치 확인 후 해당 위치로 좌표 변경
 function getLocation() {
     // HTML5의 geolocation으로 사용할 수 있는지 확인합니다
     if (navigator.geolocation) {
@@ -108,7 +127,6 @@ function getLocation() {
     }
 
 }
-
 
 // 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
 kakao.maps.event.addListener(map, 'click', function (mouseEvent) {

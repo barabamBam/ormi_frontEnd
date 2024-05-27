@@ -13,8 +13,7 @@ const mail = document.querySelector('#input_email');
 const modal = document.querySelector('#modal');
 const overlay = document.querySelector('#overlay');
 const ok_btn = document.querySelector('.ok_btn');
-overlay.style.width = document.body.offsetWidth + 'px';
-overlay.style.height = document.body.offsetHeight + 'px';
+
 let inputValue = "";
 form.addEventListener('submit', function (event) {
     event.preventDefault();
@@ -142,3 +141,11 @@ function fileFind() {
         return false;
     }
 }
+
+// button 클릭 시 동작
+const downloadBtn = document.querySelectorAll('.download_button');
+downloadBtn.forEach((item) => {
+    item.addEventListener('click', () => {
+        alert("아무것도 없지렁~~!");
+    })
+})

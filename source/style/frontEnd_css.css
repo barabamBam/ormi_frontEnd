@@ -533,7 +533,7 @@ h3 {
     height: 400px;
     position: fixed;
     z-index: 10;
-    top: 35%;
+    top: 25%;
     background-image: url("../img/modal-bgimg.png");
     background-size: 600px 400px;
     background-repeat: no-repeat;
@@ -550,10 +550,6 @@ h3 {
 #modal img {
     width: 110px;
     height: 112px;
-}
-
-.ok_btn {
-    width: 183px;
 }
 
 #modal p:nth-child(2) {

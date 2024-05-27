@@ -4,12 +4,15 @@ const menuClose = document.querySelector('.menu_close');
 const nav = document.querySelector('header nav');
 const header = document.querySelector('header');
 
-header.addEventListener('resize', () => {
+window.addEventListener('resize', () => {
     if(header.offsetWidth > 1190) {
         menuOpen.style.display = 'none';
         menuClose.style.display = 'none';
         if (nav.classList.contains('closing')) nav.classList.remove('closing');
         if (nav.classList.contains('active')) nav.classList.remove('active');
+    }
+    else if(header.offsetWidth <= 1190 && menuClose.style.display === 'none'){
+        menuOpen.style.display = 'unset';
     }
 });
 

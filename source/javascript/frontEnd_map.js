@@ -119,7 +119,6 @@ function getLocation() {
             var locPosition = new kakao.maps.LatLng(lat, lon); // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
             // 마커 위치를 설정합니다
             marker.setPosition(locPosition);
-            console.log(locPosition);
             // 지도 중심좌표를 접속위치로 변경합니다
             map.setCenter(locPosition);
             write_location(locPosition);

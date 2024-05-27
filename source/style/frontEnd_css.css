@@ -108,7 +108,6 @@ main > div {
     min-height: 798px;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
 }
 
 .top h2 {
@@ -140,8 +139,8 @@ main > div {
 .box_cat {
     max-width: 415px;
     max-height: 766px;
-    width: 20vw;
-    height:70vh;
+    /*width: 20%;*/
+    height:70%;
     position: relative;
     top: 100px;
     padding-right: 5%;
@@ -230,7 +229,6 @@ h3 {
 #image_article p span {
     color: #D97652;
 }
-#image_article
 #image_article .bold_text {
     font-size: 24px;
     font-weight: 700;
@@ -492,7 +490,7 @@ h3 {
 #scroll_Top {
     width: 50px;
     height: 50px;
-
+    padding: 0;
     position: fixed;
     z-index: 100;
     right: 24px;
@@ -605,7 +603,7 @@ footer > nav {
     padding: 0 10px;
 }
 
-@media screen and (max-width: 1240px) {
+@media screen and (max-width: 1190px) {
     .menu_open {
         display: unset;
         padding-right: 5%;
@@ -663,6 +661,7 @@ footer > nav {
         flex-direction: row;
         padding: 30px 0;
     }
+    .top { flex-wrap: wrap; }
     .top h2, .top p {
         text-align: center;
     }
@@ -675,6 +674,7 @@ footer > nav {
     .box_cat {
         width: 197px;
         height: 422px;
+        top: 50px;
     }
     #desc_article {
         flex-direction: column;

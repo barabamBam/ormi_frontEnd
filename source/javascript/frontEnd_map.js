@@ -66,7 +66,6 @@ function write_location(pos) {
                 addr = result[0].address.address_name;
             else
                 addr = result[0].road_address.address_name;
-            console.log(addr);
 
             if (!checkSearchedWord(addr)) {
                 return;
@@ -83,6 +82,7 @@ function write_location(pos) {
 // 좌표에 해당하는 위치의 주소를 영문 변환
 async function convertEnglish(addr) {
     try {
+        console.log(addr);
         const response = await fetch(`https://www.juso.go.kr/addrlink/addrEngApi.do?keyword=${addr}&confmKey=devU01TX0FVVEgyMDI0MDUyMTE2MzcwMDExNDc4MjU=&resultType=json`);
         if(!response.ok) throw new Error('영문 주소를 받아올 수 없습니다.');
         // 제이슨 데이터를 자바스크립트 객체로 파싱
@@ -110,18 +110,29 @@ async function convertEnglish(addr) {
 function getLocation() {
     // HTML5의 geolocation으로 사용할 수 있는지 확인합니다
     if (navigator.geolocation) {
+        console.log("yes");
         // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+        // 현재 위치를 받을 수 있으면 successCallback 실행
         navigator.geolocation.getCurrentPosition(function (position) {
             var lat = position.coords.latitude, // 위도
                 lon = position.coords.longitude; // 경도
             var locPosition = new kakao.maps.LatLng(lat, lon); // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
             // 마커 위치를 설정합니다
             marker.setPosition(locPosition);
+            console.log(locPosition);
             // 지도 중심좌표를 접속위치로 변경합니다
             map.setCenter(locPosition);
             write_location(locPosition);
+
+        }, () => {
+            // 현재 위치를 받을 수 없으면 errorCallback 실행
+            // GeoLocation을 사용할 수 없을 때 기본 마커 위치를 설정합니다
+            // 이미 생성한 마커를 지도 위에 표시합니다
+            marker.setMap(map);
+            write_location(map.getCenter());
         });
     } else {
+        console.log("no");
         // GeoLocation을 사용할 수 없을 때 기본 마커 위치를 설정합니다
         // 이미 생성한 마커를 지도 위에 표시합니다
         marker.setMap(map);
